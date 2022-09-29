@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: zhixing-user
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+  profiles:
+    active: ''
+  cloud:
+    nacos:
+      config:
+        server-addr: 119.29.77.107
+        namespace: c3108468-5b07-4639-a101-3cf12feff1ba
+        group: MUYUAN
+        file-extension: yaml
+      discovery:
+        server-addr: 119.29.77.107
+        group: MUYUAN
+        namespace: c3108468-5b07-4639-a101-3cf12feff1ba
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://119.29.77.107:3306/zhixing_user?serverTimezone=UTC&autoReconnect=true&&failOverReadOnly=false
+    username: root
+    password: 4+1NGowdKIndl
+server:
+  port: 25001
+logging:
+  config: classpath:log4j${spring.profiles.active}.xml
+  level:
+    com.muyuan.system.infrastructure.persistence.mapper.*: debug
+    com.alibaba.nacos.client.*: warn
+    com.alibaba.cloud.dubbo.*: error
+    org.apache.dubbo.*: error
+    io.lettuce: error
+
+dubbo:
+  scan:
+    base-packages: com.muyuan.user.face.interfaces
+  protocol:
+    name: dubbo
+    port: 25101
+    serialization: kryo
+    optimizer: com.zhixing.common.dubbo.serialization.SerializationOptimizerImpl
+  application:
+    name: ${spring.application.name}
+    id: ${spring.application.name}
+  consumer:
+    check: false
+  registry:
+    address: spring-cloud://localhost

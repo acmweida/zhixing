@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.muyuan.user.infrastructure.repo.mapper.RoleMapper">
+
+
+<!--    <select id="selectRoleByUserId" resultType="com.muyuan.user.infrastructure.repo.dataobject.RoleDO">-->
+<!--        select role.* from (-->
+<!--                               select * from t_role where status = 0 and type = #{type}-->
+<!--                           ) role-->
+<!--                               inner join (-->
+<!--            select * from t_user_role where user_id = #{userId}-->
+<!--        ) user_role on user_role.role_id = role.id-->
+<!--    </select>-->
+</mapper>
